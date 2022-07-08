@@ -22,7 +22,7 @@ cd <путь до папки>
 git clone https://github.com/SimonaSoloduha/forms
 
 ## Перейдите в папку проекта
-cd flask
+cd forms
 
 ## Создайте виртуальное окружение venv
 python3 -m venv venv
