@@ -42,6 +42,10 @@ python -m pip install django
 pip3 install djangorestframework
 python3 -m pip install requests 
 
+# Запустите миграции 
+
+python manage.py migrate  
+
 # Запустите проект через консоль 
 
 python3 app.py runserver 
