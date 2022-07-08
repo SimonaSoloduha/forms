@@ -38,13 +38,13 @@ pip3 install -r requirements.txt
 
 ## При необходимости обновите pip и отдельно установить следующие пакеы: 
 
-python -m pip install django
+python3 -m pip install django
 pip3 install djangorestframework
 python3 -m pip install requests 
 
 # Запустите миграции 
 
-python manage.py migrate  
+python3 manage.py migrate  
 
 # Запустите проект через консоль 
 
