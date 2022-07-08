@@ -5,6 +5,8 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
+    atomic = False
+
     dependencies = [
         ('app_data', '0005_rename_dataform_inputform_data_form_and_more'),
     ]
