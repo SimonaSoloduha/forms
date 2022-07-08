@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
+<link rel="icon" href="data:;base64,=">
+<body>
+
+<header>
+    {% block hello %}
+    <hr>
+    <h3 style="text-align: center;">Добро пожаловать на сайт SITE</h3>
+    {% endblock %}
+    <hr>
+    //
+    <a href="{% url 'site_form_list_empty' %}">Формы для заполнения</a>
+    //
+    <a href="{% url 'site_form_list_not_empty' %}">Заполненые формы</a>
+    //
+    <hr>
+
+</header>
+<div>
+
+    {% block content %}
+        <h1>Главная страница site</h1>
+    {% endblock %}
+
+</div>
+
+</body>
+</html>
+
+<script type="text/javascript" src={% static "js/site.js" %}></script>

@@ -1,0 +1,22 @@
+{% extends 'main.html'%}
+
+<body>
+
+    {% block content %}
+        <h3 style="text-align: center;">Все формы</h3>
+
+        {% if data_form_list %}
+            <diw>
+                {% for data_form in data_form_list %}
+                    <div>{{ data_form.name }} </div>
+                    <a href="/data/{{data_form.id}}/edit">Редактировать форму</a>
+                    <hr>
+                {% endfor %}
+            </diw>
+        {% else %}
+            <p style="text-align: center;">Форм нет</p>
+        {% endif %}
+
+    {% endblock %}}
+
+</body>

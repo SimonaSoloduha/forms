@@ -1,0 +1,49 @@
+{% extends 'main_site.html'%}
+
+<body>
+
+    {% block content %}
+        <h2>Добавить данные в форму {{ name }}</h2>
+            <form action=""  class="uploadForm" method="post">
+
+                {% if input_forms %}
+                    {% for input_form in input_forms %}
+                        <div class="input-{{input_form.id}}">
+                            <h4>{{input_form.name}}:</h4>
+                            <input class="{{input_form.id}}">
+                            <p style="font-size: 80%;">*{{input_form.description}}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+
+                {% if textarea_forms %}
+                    {% for textarea_form in textarea_forms %}
+                        <div class="textarea-{{textarea_form.id}}">
+                            <h4>{{textarea_form.name}}:</h4>
+                            <textarea class="{{textarea_form.id}}"> </textarea>
+                            <p style="font-size: 80%;">*{{textarea_form.description}}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if select_forms %}
+                    {% for select_form in select_forms %}
+                        <div class="select-{{select_form.id}}">
+                            <h4>{{select_form.name}}:</h4>
+                            <select class="edit_id_select" style="width:190px;">
+                                {% for choice in select_form.choices %}
+                                    <option value="{{ choice }}">{{ choice }}</option>
+                                {% endfor %}
+                            </select>
+                            <p style="font-size: 80%;">*{{select_form.description}}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <br>
+                <input type="button" id="submit-form-save" value="Отправить">
+            </form>
+
+    {% endblock %}
+
+</body>

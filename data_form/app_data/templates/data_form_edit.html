@@ -1,0 +1,120 @@
+{% extends 'main.html'%}
+
+<body>
+
+    {% block content %}
+        <h2 style="text-align: center;">Редактировать форму</h2>
+        <p style="text-align: center;">Отредактируйте форму и нажмите кномку "Сохранить"</p>
+
+            <link rel="import" href="form.html">
+
+            <form action=""  class="uploadForm" method="post">
+                {% csrf_token %}
+                <ol id="ol-form">
+                    <button type ='button' id="add-input">Добавить поле input</button>
+                    <button type ='button' id="add-textarea">Добавить поле textarea</button>
+                    <button type ='button' id="add-select">Добавить поле select</button>
+                    <li>
+                        <p>Название формы: {{ edit_data_form.name }}</p>
+                    </li>
+
+                    <li class="li-input">
+                        <p>Поле input</p>
+                            {% csrf_token %}
+                        <div>
+                            <p> Название поля: {{ input_form.name }} </p>
+                            <p> Описание поля: {{ input_form.description }} </p>
+                        </div>
+                        <br>
+                    </li>
+
+                    <li class="li-textarea">
+                        <p>Поле textarea </p>
+                            {% csrf_token %}
+                        <div>
+                            <p> Название поля: {{ textarea_form.name }} </p>
+                            <p> Описание поля: {{ textarea_form.description }} </p>
+                        </div>
+                        <br>
+                    </li>
+
+                    <li class="li-select">
+                        <p>Поле select</p>
+                        <p> Название поля: <input id="name_select_form"></p>
+                        <p> Описание поля: <input id="description_select_form"></p>
+                        <input id="select_name">
+                        <button type ='button' class="add-select-name">Доавить значение в поле select</button>
+                            {% csrf_token %}
+                        <br>
+                        <select id="id_select" style="width:190px;">
+                            <option value=""></option>
+                        </select>
+                        <button type ='button' class="del-select-name">Удалить выбранное значение из select</button>
+                        <br>
+                    </li>
+
+                {% if edit_input_forms %}
+                    {% for edit_input_form in edit_input_forms %}
+                        <li class="edit-li-input-form-{{edit_input_form.id}}">
+                            <p>Поле input</p>
+                                {% csrf_token %}
+                            <div>
+                                <p> Название поля: {{ edit_input_form.name }} </p>
+                                <p> Описание поля: {{ edit_input_form.description }} </p>
+
+                            </div>
+                            <br>
+                            <div class="del">
+                                <button type ='button' class='del-form'>Удалить поле</button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+
+                {% if edit_textarea_forms %}
+                    {% for edit_textarea_form in edit_textarea_forms %}
+                        <li class="edit-li-textarea-form-{{edit_textarea_form.id}}">
+                            <p>Поле textarea </p>
+                                {% csrf_token %}
+                            <div>
+                                <p> Название поля: {{ edit_textarea_form.name }} </p>
+                                <p> Описание поля: {{ edit_textarea_form.description }} </p>
+                            </div>
+                            <br>
+                            <div class="del">
+                                <button type ='button' class='del-form'>Удалить поле</button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+
+                {% if edit_select_forms %}
+                    {% for edit_select_form in edit_select_forms %}
+                    <li class="edit-li-select-form-{{edit_select_form.id}}">
+                        <p>Поле select</p>
+                        <p> Название поля: {{ edit_select_form.name }}</p>
+                        <p> Описание поля: {{ edit_select_form.description }}</p>
+                        <input id="edit_select_name">
+                        <button  type ='button' class="add-select-name">Доавить значение в поле select</button>
+                            {% csrf_token %}
+                        <br>
+                        <select class="edit_id_select" style="width:190px;">
+                            {% for choice in edit_select_form.all_choices %}
+                                <option value="{{ choice }}">{{ choice }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="button" class="del-select-name">Удалить выбранное значение из select</button>
+                        <br>
+                        <div class="del">
+                            <button type ='button' class='del-form'>Удалить поле</button>
+                        </div>
+                    </li>
+                    {% endfor %}
+                {% endif %}
+                </ol>
+                <input type="submit" id="submit-form-update" value="Сохранить">
+            </form>
+
+    {% endblock %}
+
+</body>

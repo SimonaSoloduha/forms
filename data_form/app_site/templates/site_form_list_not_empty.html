@@ -1,0 +1,27 @@
+{% extends 'main_site.html'%}
+
+<body>
+
+    {% block content %}
+
+    <h1 style="text-align: center;">Все заполненые формы</h1>
+    <p style="text-align: center;">Здесь вы можете посмотреть заполненые формы</p>
+
+    {% if forms_id %}
+
+        <div>
+            {% for data_form_id in forms_id %}
+                <p><a href=" http://127.0.0.1:8000/site/detail/{{data_form_id}}/">
+                    Посмотреть форму с id {{ data_form_id }} </a></p>
+            {% endfor %}
+        </div>
+
+    {% else %}
+
+        <p style="text-align: center;">Форм нет</p>
+
+    {% endif %}
+
+    {% endblock %}}
+
+</body>

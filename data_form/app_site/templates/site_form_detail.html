@@ -1,0 +1,44 @@
+{% extends 'main_site.html'%}
+
+<body>
+
+    {% block content %}
+        <h2>Данные формы {{ name }}</h2>
+            <hr>
+            {% if input_forms %}
+                {% for input_form in input_forms %}
+                    <div class="input-{{input_form.id}}">
+                        <h4>{{input_form.name}}:</h4>
+                        <p>{{input_form.data_input}}</p>
+                        <p style="font-size: 80%;">*{{input_form.description}}</p>
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% endif %}
+
+
+            {% if textarea_forms %}
+                {% for textarea_form in textarea_forms %}
+                    <div class="textarea-{{textarea_form.id}}">
+                        <h4>{{textarea_form.name}}:</h4>
+                        <p>{{textarea_form.data_textarea}}</p>
+                        <p style="font-size: 80%;">*{{textarea_form.description}}</p>
+
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% endif %}
+
+            {% if select_forms %}
+                {% for select_form in select_forms %}
+                    <div class="select-{{select_form.id}}">
+                        <h4>{{select_form.name}}:</h4>
+                        <p>{{select_form.select}}</p>
+                        <p style="font-size: 80%;">*{{select_form.description}}</p>
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% endif %}
+    {% endblock %}
+
+</body>
